@@ -1,0 +1,19 @@
+version: "3"
+services:
+  golang:
+    image: golang-cuvva-hadi:1.3.6
+    container_name: hadi-cuvva-tech-test
+    build:
+      context: ../..
+      dockerfile: build/docker/golang/Dockerfile
+    tty: true
+    env_file:
+      - ../../.env
+    volumes:
+      - ./../../:/var/apps/cuvva
+    networks:
+      - cuvva_tech_test_hadi
+
+networks:
+  cuvva_tech_test_hadi:
+    driver: bridge
